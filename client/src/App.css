@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.tableAuth {
+  justify-content: center;
+  text-align: center;
+}
+
+table {
+  border: 2px solid black;
+}
+
+.datos {
+  display: flex;
+  justify-content: center;
+}
+
+.autores {
+  display: flex;
+  justify-content: center;
+}
