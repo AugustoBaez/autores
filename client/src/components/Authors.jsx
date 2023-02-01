@@ -3,16 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Authors = () => {
   const [author, setAuthor] = useState([]);
-  /* const [quote, setQuote] = useState([]);
-  const [id, setId] = useState([]); */
+
 
   useEffect(() => {
     const getAuthor = async () => {
       try {
         const result = await axios.get("http://localhost:8000/api/authors/"); //se pone el id del useparams aca para hacer fetch de esa id
-        /*         console.log(result.data.autor); */
         setAuthor(result.data.autor.map((prod) => prod));
-        /* setQuote(result.data.product.map((prod) => prod.price)); */
       } catch (error) {
         console.log(error);
       }
