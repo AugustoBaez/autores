@@ -4,7 +4,7 @@ const AuthorSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "name is required"],
       minLength: [3, "must be at least 3 characters long"],
     },
     quotes: { type: String },
@@ -12,5 +12,5 @@ const AuthorSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Author = mongoose.model("Author", AdminSchema);
+const Author = mongoose.model("Author", AuthorSchema);
 module.exports = Author;
