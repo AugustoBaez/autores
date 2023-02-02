@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 const EditAuthor = () => {
   const [name, setName] = useState("");
+  const [errors, setErrors] = useState({})
   const { id } = useParams();
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -17,6 +18,7 @@ const EditAuthor = () => {
       })
       .catch((error) => {
         console.log(error, "error haciendo post");
+        setErrors(error.response.data.errors)
       });
   };
 
@@ -30,6 +32,7 @@ const EditAuthor = () => {
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" onChange={(e) => setName(e.target.value)} />
+        {errors ? <span > {errors.message}</span> : null }<br></br>
         <button>Cancel</button>
         <button type="submit">Submit</button>
       </form>

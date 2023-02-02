@@ -21,7 +21,9 @@ const Authors = () => {
     try {
       const result = await axios
         .delete(`http://localhost:8000/api/author/delete/${id}`) //se pone el id del useparams aca para hacer fetch de esa id
-        .then((res) => {});
+        .then((res) => {
+          setAuthor(author.filter(autor => autor._id !== id))
+        });
     } catch (error) {
       console.log(error);
     }
