@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const AddAuthor = () => {
   const [name, setName] = useState("");
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,15 +13,21 @@ const AddAuthor = () => {
       })
       .then((res) => {
         console.log(res, "succesful");
-        navigate("/main");
+        // navigate("/main");
       })
       .catch((error) => {
-        console.log(error, "error haciendo post");
-        setErrors(error.data.error.message)
+        if (console.log(error, "error haciendo post")) {
+          setErrors(error.response.data.errors)
+          const errorResponse = error.response.data.errors;
+          if (errorResponse?.name?.message) {
+            setErrors(errorResponse?.name?.message)
+          }
+          console.log(errors)
+        }
       });
   };
 
-  console.log(errors)
+  console.log(errors, "hola")
   return (
     <div>
       <h1>Favorite authors</h1>
@@ -32,7 +38,7 @@ const AddAuthor = () => {
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" onChange={(e) => setName(e.target.value)} />
-        {errors.name ? <span > {errors.message}</span> : null }<br></br>
+        <span>{errors}</span>
         <button>
           <a href={`/main`}></a>
           Cancel

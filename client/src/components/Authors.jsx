@@ -39,10 +39,10 @@ const Authors = () => {
         <label htmlFor="">Actions Available</label>
       </div>
       <div className="tableAuth">
-        {author.map((prod) => (
+        {author.map((prod, index) => (
           <>
             <div className="datos">
-              <p>{prod.name}</p>
+              <p key={index}>{prod.name}</p>
               <button>
                 <a href={`/edit/${prod._id}`}>Edit</a>
               </button>

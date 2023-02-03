@@ -31,7 +31,7 @@ const EditAuthor = () => {
       <p>Edit this author:</p>
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
-        <input type="text" onChange={(e) => setName(e.target.value)} />
+        <input type="text" placeholder={name} onChange={(e) => setName(e.target.value)} />
         {errors ? <span > {errors.message}</span> : null }<br></br>
         <button>Cancel</button>
         <button type="submit">Submit</button>
