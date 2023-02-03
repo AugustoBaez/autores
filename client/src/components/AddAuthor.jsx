@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AddAuthor = () => {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState(null)
+
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ const AddAuthor = () => {
       })
       .then((res) => {
         console.log(res, "succesful");
+
         // navigate("/main");
       })
       .catch((error) => {
@@ -28,6 +30,7 @@ const AddAuthor = () => {
   };
 
   console.log(errors, "hola")
+
   return (
     <div>
       <h1>Favorite authors</h1>
@@ -38,7 +41,9 @@ const AddAuthor = () => {
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" onChange={(e) => setName(e.target.value)} />
+
         <span>{errors}</span>
+
         <button>
           <a href={`/main`}></a>
           Cancel
