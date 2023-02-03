@@ -1,4 +1,5 @@
 const Author = require("../models/author.model");
+const catchError = (error, res) => res.status(400).json(error);
 
 module.exports.findAllAuthors = (req, res) => {
   Author.find()
@@ -17,7 +18,7 @@ module.exports.findAuthor = (req, res) => {
 module.exports.addAuthor = (req, res) => {
   Author.create(req.body)
     .then((newAuthor) => res.json({ author: newAuthor }))
-    .catch((error) => res.json({ message: "error adding new author", error }));
+    .catch((error) => catchError(error, res));
 };
 
 module.exports.updateAuthor = (req, res) => {
