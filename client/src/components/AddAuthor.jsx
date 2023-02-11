@@ -22,7 +22,6 @@ const AddAuthor = () => {
       });
   };
 
-  console.log(errors, "hola")
 
   return (
     <div>

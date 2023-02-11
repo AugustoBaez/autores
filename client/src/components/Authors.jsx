@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const Authors = () => {
   const [author, setAuthor] = useState([]);
 
-
   useEffect(() => {
     const getAuthor = async () => {
       try {
