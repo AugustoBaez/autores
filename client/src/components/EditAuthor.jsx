@@ -36,18 +36,18 @@ const EditAuthor = () => {
       });
   };
   console.log(errors)
-
+  console.log(name)
   return (
     <div>
       <h1>Favorite authors</h1>
       <p>
-        <a href="">Home</a>
+        <a href="/">Home</a>
       </p>
       <p>Edit this author:</p>
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" placeholder={pastName} onChange={(e) => setName(e.target.value)} />
-        {name.length < 3 ? <span>{errors}</span> : null} 
+        {name.length < 3 ? <span>error</span> : null} 
         <button>Cancel</button>
         <button type="submit">Submit</button>
       </form>
