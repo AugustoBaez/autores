@@ -15,17 +15,10 @@ const AddAuthor = () => {
       .then((res) => {
         console.log(res, "succesful");
 
-        // navigate("/main");
+        navigate("/main");
       })
       .catch((error) => {
-        if (console.log(error, "error haciendo post")) {
-          setErrors(error.response.data.errors)
-          const errorResponse = error.response.data.errors;
-          if (errorResponse?.name?.message) {
-            setErrors(errorResponse?.name?.message)
-          }
-          console.log(errors)
-        }
+        setErrors(error.response.data.errors.name.properties.message)
       });
   };
 
@@ -41,9 +34,7 @@ const AddAuthor = () => {
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" onChange={(e) => setName(e.target.value)} />
-
-        <span>{errors}</span>
-
+        {name.length < 3 ? <span>{errors}</span> : null} 
         <button>
           <a href={`/main`}></a>
           Cancel
