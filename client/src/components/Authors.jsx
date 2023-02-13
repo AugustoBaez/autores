@@ -19,7 +19,7 @@ const Authors = () => {
   const deleteAuthor = async (id) => {
     try {
       const result = await axios
-        .delete(`http://localhost:8000/api/author/delete/${id}`) //se pone el id del useparams aca para hacer fetch de esa id
+        .delete(`http://localhost:8000/api/author/delete/${id}`) 
         .then((res) => {
           setAuthor(author.filter(autor => autor._id !== id))
         });

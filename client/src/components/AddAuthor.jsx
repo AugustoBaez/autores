@@ -14,8 +14,7 @@ const AddAuthor = () => {
       })
       .then((res) => {
         console.log(res, "succesful");
-
-        navigate("/main");
+        navigate("/");
       })
       .catch((error) => {
         setErrors(error.response.data.errors.name.properties.message)
@@ -35,7 +34,7 @@ const AddAuthor = () => {
         <input type="text" onChange={(e) => setName(e.target.value)} />
         {name.length < 3 ? <span>{errors}</span> : null} 
         <button>
-          <a href={`/main`}></a>
+          <a href={`/`}></a>
           Cancel
         </button>
         <button>Submit</button>

@@ -14,7 +14,7 @@ const EditAuthor = () => {
         const result = await axios.get(`http://localhost:8000/api/author/${id}`); //se pone el id del useparams aca para hacer fetch de esa id
         setPastName(result.data.author[0].name);
       } catch (error) {
-        console.log(error);
+        console.log(error, "asdfasdfasdf");
       }
     };
     getPastName();
@@ -28,15 +28,14 @@ const EditAuthor = () => {
       })
       .then((res) => {
         console.log(res, "succesful");
-        navigate("/main");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error, "error haciendo post");
-         setErrors(error.response.data.errors.name.properties.message)
+        setErrors(error.response.data.errors.name.properties.message)
       });
   };
   console.log(errors)
-  console.log(name)
   return (
     <div>
       <h1>Favorite authors</h1>
@@ -47,7 +46,9 @@ const EditAuthor = () => {
       <form action="" onSubmit={handleSubmit}>
         <p>Name:</p>
         <input type="text" placeholder={pastName} onChange={(e) => setName(e.target.value)} />
-        {name.length < 3 ? <span>error</span> : null} 
+        <div>
+          {name.length < 3 ? <span>name must be at least 3 characters long</span> : null}
+        </div>
         <button>Cancel</button>
         <button type="submit">Submit</button>
       </form>
